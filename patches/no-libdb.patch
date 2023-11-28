@@ -1,0 +1,21 @@
+Subject: Don't require libdb
+
++++ a/debian/control
+@@ -14,7 +14,7 @@
+                groff-base,
+                heimdal-multidev <!pkg.cyrus-sasl2.nogssapi>,
+                krb5-multidev <!pkg.cyrus-sasl2.nogssapi>,
+-               libdb-dev,
++               libgdbm-dev,
+                libcrypt-dev,
+                libkrb5-dev <!pkg.cyrus-sasl2.nogssapi>,
+                libldap2-dev <!pkg.cyrus-sasl2.noldap>,
++++ a/debian/rules
+@@ -94,6 +94,7 @@
+ 	--enable-ntlm \
+ 	--disable-passdss \
+ 	$(CONFIGURE_SQL) \
++	--with-dblib=gdbm \
+ 	--with-sqlite3=/usr \
+ 	--with-mysql=/usr \
+ 	--with-pgsql=/usr \
